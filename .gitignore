@@ -1,0 +1,15 @@
+# Ignore node_modules directory (common for Node.js projects)
+node_modules/
+
+
+# Ignore environment variable files containing secrets/keys
+.env
+
+# Do NOT ignore package.json and README as they should be version controlled
+# package.json
+# README.md
+
+# Usually package-lock.json should NOT be ignored - it should be committed to lock dependencies
+# So don't include package-lock.json in .gitignore unless you have strong reasons
+
+
