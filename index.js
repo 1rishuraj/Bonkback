@@ -11,8 +11,28 @@ import bs58 from "bs58";
 const app = express();
 const { User, Txn } = models; // Destructure to get User and Txn
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173",
+  
+];
 
+// Use CORS middleware
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // Allow non-browser clients like Postman
+      const normalizedOrigin = origin.replace(/\/$/, "");
+      if (allowedOrigins.includes(normalizedOrigin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 const signup = zod.object({
   name: zod.string(),
