@@ -212,7 +212,7 @@ app.post("/api/v1/txn/buy", async function (req, res) {
       await Txn.create({
         signature: txSig,
         result: "pending", // mark as pending initially
-        timestamp: new Date().toISOString(), // "2025-09-15T05:52:33.000Z"
+        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }), // "2025-09-15T05:52:33.000Z"
         category: "BUY",
         user: req.id._id,
       });
@@ -278,7 +278,7 @@ app.post("/api/v1/txn/sell", async function (req, res) {
       await Txn.create({
         signature: txSig,
         result: "pending", // mark as pending initially
-        timestamp: new Date().toISOString(), // "2025-09-15T05:52:33.000Z"    
+        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }), // "2025-09-15T05:52:33.000Z"    
         category: "SELL",
         user: req.id._id,
       });
