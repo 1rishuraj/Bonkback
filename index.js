@@ -13,7 +13,7 @@ const { User, Txn } = models; // Destructure to get User and Txn
 
 const allowedOrigins = [
   "http://localhost:5173",
-  
+  "https://bonkfront.vercel.app"
 ];
 
 // Use CORS middleware
